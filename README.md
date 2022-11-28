@@ -1,6 +1,6 @@
 <a name="readme_top"></a>
 
-# {repo_name}
+# dhge_mensa_bot
 [![Contributors][contributors_shield]][contributors_url]
 [![Forks][forks_shield]][forks_url]
 [![Stargazers][stars_shield]][stars_url]
