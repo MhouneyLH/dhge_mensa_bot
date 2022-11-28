@@ -21,8 +21,7 @@ response = urlopen(API_URL)
 data_json = json.loads(response.read())
 
 title = f'Mittagessen vom {currentDate.day}.{currentDate.month}.{currentDate.year}'
-body = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post einfallen, kannst du diesen hier[GitHub-Link einfügen] gerne in Form einese Issues mitteilen.\n'
-
+body = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post einfallen, kannst du diese gerne [💬 hier](https://github.com/MhouneyLH/dhge_mensa_bot) in Form einese Issues mitteilen.\n'
 for i in range(0, len(data_json)):
     meal = data_json[i]
     body += f'''# {meal["name"]}
