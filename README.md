@@ -16,6 +16,11 @@ The DHGE-Mensa-Bot checks the meals from the openmensa-api of the DHGE (Duale Ho
    ```sh
    git clone https://github.com/MhouneyLH/dhge_mensa_bot.git
    ```
+2. Install the newest version of [python](https://www.python.org/downloads/)
+3. Install the praw-package
+   ```sh
+   pip install praw
+   ```
 <p align="right">(<a href="#readme_top">back to top</a>)</p>
 
 ## 👨🏻‍💼 Contributing
