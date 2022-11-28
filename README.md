@@ -8,22 +8,13 @@
 <br>
 
 ## 📑 About the project
-Describe the project.
+The DHGE-Mensa-Bot checks the meals from the openmensa-api of the DHGE (Duale Hochschule Gera-Eisenach) and posts a reddit-post in the subreddit [r/dhgememes](https://www.reddit.com/r/dhgememes/). This happens every day at 10am UTC+1 except on the weekend.
 <p align="right">(<a href="#readme_top">back to top</a>)</p>
-
-<!-- ## 🔥 Features
-### 👍🏻 Feature 1
-### 👍🏻 Feature 2
-<p align="right">(<a href="#readme_top">back to top</a>)</p> -->
 
 ## 🔢 Getting started
 1. Clone the repository
    ```sh
    git clone https://github.com/MhouneyLH/dhge_mensa_bot.git
-   ```
-2. Install the npm packages
-   ```sh
-   npm install
    ```
 <p align="right">(<a href="#readme_top">back to top</a>)</p>
 
