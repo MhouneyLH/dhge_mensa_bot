@@ -1,0 +1,34 @@
+name: Schedule the Reddit Post
+
+# posts once a day at 9am a reddit post
+# about the meals from the mensa in the DHGE (Gera)
+
+on:
+  workflow_dispatch: # possible to run form ui, when needed
+  schedule:
+    # once a day at 9am
+    - cron: '0 9 * * *'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  schedule_reddit_post:
+    name: Schedule Reddit Post
+    runs-on: ubuntu-latest # ich muss irgendwo mal noch spezifizieren, wie ich den Docker-Container am besten aufsetzen kann
+    steps:
+      - name: Check out repositories default branch
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@4
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install PRAW
+        run: pip install praw
+      - name: Run script
+        run: python reddit_bot.py
+      # - if: ${{ failure() }}
+      #   name: Schedule Reddit Post Script had a failure
+      #   id: check
