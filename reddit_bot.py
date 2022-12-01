@@ -17,10 +17,7 @@ def create_and_publish_reddit_post(data, date):
 
     for i in range(0, len(data)):
         meal = data[i]
-        body += f'''# {meal["name"]}
-    * Preis (Studenten): {meal["prices"]["students"]}€
-    * {meal["notes"][1]}
-    '''
+        body += f'# {meal["name"]}\n* Preis (Studenten): {meal["prices"]["students"]}€\n* {meal["notes"][1]}\n'
 
     reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext=body, flair_id=FLAIR_ID_INFORMATION)
 
