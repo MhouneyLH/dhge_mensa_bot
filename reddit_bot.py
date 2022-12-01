@@ -30,3 +30,4 @@ for i in range(0, len(data_json)):
 '''
 
 reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext=body, flair_id=FLAIR_ID_INFORMATION)
+# rather use GitHub-CI than aws -> das hier könnte ganz interessant sein: https://docs.github.com/en/actions/examples/using-the-github-cli-on-a-runner
