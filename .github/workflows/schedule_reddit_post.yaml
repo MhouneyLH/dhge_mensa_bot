@@ -1,12 +1,13 @@
 name: Schedule the Reddit Post
 
-# posts once a day at 9am a reddit post
-# about the meals from the mensa in the DHGE (Gera)
+# posts once a day at 10am a reddit post to the subreddit r/dhgememes
+# the post is about the meals from the mensa in the DHGE (Gera)
 
 on:
-  workflow_dispatch: # possible to run form ui, when needed
+  workflow_dispatch: # possible to run from ui, when needed
   schedule:
-    # once a day at 9am
+    # once a day at 10am
+    # cron uses UTC-timezone -> germany (berlin) is in the timezone UTC+1
     - cron: '0 9 * * *'
 
 permissions:
@@ -16,7 +17,7 @@ permissions:
 jobs:
   schedule_reddit_post:
     name: Schedule Reddit Post
-    runs-on: ubuntu-latest # ich muss irgendwo mal noch spezifizieren, wie ich den Docker-Container am besten aufsetzen kann
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repositories default branch
         uses: actions/checkout@v3
@@ -26,6 +27,3 @@ jobs:
         run: pip install praw
       - name: Run script
         run: python reddit_bot.py
-      # - if: ${{ failure() }}
-      #   name: Schedule Reddit Post Script had a failure
-      #   id: check
