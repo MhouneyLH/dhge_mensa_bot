@@ -6,9 +6,9 @@ name: Schedule the Reddit Post
 on:
   workflow_dispatch: # possible to run from ui, when needed
   schedule:
-    # once a day at 10am
+    # once a day at 10am (except on weekend)
     # cron uses UTC-timezone -> germany (berlin) is in the timezone UTC+1
-    - cron: '0 9 * * *'
+    - cron: '0 9 * * 1-5'
 
 permissions:
   contents: read
