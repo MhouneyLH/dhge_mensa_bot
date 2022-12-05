@@ -20,11 +20,11 @@ def create_and_publish_reddit_post(data, date):
         meal_name = meal["name"]
         meal_price_students = meal["prices"]["students"]
         meal_notes = meal["notes"]
-        
-        body += f'# {meal_name}\n* Preis (Studenten): {meal_price_students}€\n*'
-        for j in range(0, len(meal_notes)):
-            body += f'{meal_notes[j]}\n'
 
+        body += f'# {meal_name}\n* Preis (Studenten): {meal_price_students}€\n'
+        for j in range(0, len(meal_notes)):
+            body += f'* {meal_notes[j]}\n'
+    
     reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext=body, flair_id=FLAIR_ID_INFORMATION)
 
 ##### SCRIPT #####
