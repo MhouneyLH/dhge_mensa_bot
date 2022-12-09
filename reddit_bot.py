@@ -28,10 +28,10 @@ def create_and_publish_reddit_post(data, date):
     reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext=body, flair_id=FLAIR_ID_INFORMATION)
 
 ##### SCRIPT #####
-reddit = praw.Reddit(client_id='qJsfx6IHun-VSHRQ8H2nOA',
-                     client_secret='EBTx7u5EDeG2Cq0HX9E1cpu_y2vV5w',
-                     refresh_token='1064866237953-I2RCpbVRKiLi5nM36wLi0X9jVCWT3Q',
-                     user_agent='cool mensa-bot v1.0 by /u/MhouneyL',)
+reddit = praw.Reddit(client_id='gCJJH0GO5aN0sjFM6zoc4w',
+                     client_secret='KpgXvshvdMjixot1J5grXZ3U737mHw',
+                     refresh_token='2418566552937-xh4rG2tMISfYHeWMJl9nF29-kYGTAw',
+                     user_agent='mensa-bot v1.0 by /u/MensaBot',)
 
 currentDate = datetime.datetime.now()
 currentDateInISOFormat = currentDate.isoformat()[0:10]
