@@ -1,8 +1,9 @@
-import praw
-from urllib.request import urlopen
-import json
 import datetime
+import json
+import praw
+import random
 import requests
+from urllib.request import urlopen
 
 ##### CONSTANTS #####
 API_MENSA_IP = '836'
