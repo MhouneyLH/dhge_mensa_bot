@@ -12,6 +12,7 @@ PRAW_CLIENT_ID = 'gCJJH0GO5aN0sjFM6zoc4w'
 PRAW_CLIENT_SECRET = 'KpgXvshvdMjixot1J5grXZ3U737mHw'
 PRAW_REFRESH_TOKEN = '2418566552937-xh4rG2tMISfYHeWMJl9nF29-kYGTAw'
 PRAW_USER_AGENT = 'mensa-bot v1.1 by /u/MensaBot'
+POST_BODY_INFORMATION_MESSAGE = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post oder generell für diesen Bot einfallen, kannst du diese gerne [💬 hier](https://github.com/MhouneyLH/dhge_mensa_bot) in Form einese Issues mitteilen.\n'
 
 ##### FUNCTIONS #####
 def isValidUrl(url):
@@ -20,11 +21,14 @@ def isValidUrl(url):
 def jsonDataIsEmpty(data):
     return data == None
 
+def checkDayAndMonth(date, day, month):
+    return  date.day == day and date.month == month
+
 def createAndPublishRedditPost(data, date):
     global reddit
 
     title = f'Mittagessen vom {date.day}.{date.month}.{date.year}'
-    body = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post einfallen, kannst du diese gerne [💬 hier](https://github.com/MhouneyLH/dhge_mensa_bot) in Form einese Issues mitteilen.\n'
+    body = POST_BODY_INFORMATION_MESSAGE
 
     for i in range(0, len(data)):
         meal = data[i]
@@ -38,6 +42,28 @@ def createAndPublishRedditPost(data, date):
     
     reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext = body, flair_id = REDDIT_FLAIR_ID_INFORMATION)
 
+def createAndPublishSpecialRedditPosts(date):
+    global reddit
+
+    title = ''
+    if checkDayAndMonth(date, 6, 12):
+        title = 'Einen schönen Nikolaustag, wünscht euch der DHGE-Reddit-Bot! 🎅🏻'
+    elif checkDayAndMonth(date, 24, 12):
+        title = 'Frohe Weihnachten und ein besinnliches Fest, wünscht euch der DHGE-Reddit-Bot! 🎁🎅🏻🎁'
+    elif checkDayAndMonth(date, 25, 12):
+        title = 'Einen frohen und besinnlichen 1. Weihnachtsfeiertag, wünscht euch der DHGE-Reddit-Bot! 🎄🎁🎄'
+    elif checkDayAndMonth(date, 26, 12):
+        title = 'Einen frohen und besinnlichen 2. Weihnachtsfeiertag, wünscht euch der DHGE-Reddit-Bot! 🎇🎄🎇'
+    elif checkDayAndMonth(date, 31, 12):
+        title = 'Frohes neues Jahr, wünscht euch der DHGE-Reddit-Bot! 🧨🎆 Ich hoffe, dass ihr alles schafft, was ihr euch für dieses Jahr vorgenommen habt. 🚀'
+    else:
+        return
+
+    body = POST_BODY_INFORMATION_MESSAGE
+
+    reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext = body, flair_id = REDDIT_FLAIR_ID_INFORMATION)
+
+
 ##### SCRIPT #####
 reddit = praw.Reddit(client_id = PRAW_CLIENT_ID,
                      client_secret = PRAW_CLIENT_SECRET,
@@ -46,14 +72,18 @@ reddit = praw.Reddit(client_id = PRAW_CLIENT_ID,
 
 currentDate = datetime.datetime.now()
 currentDateInISOFormat = currentDate.isoformat()[0:10]
+
 API_URL = f'https://openmensa.org/api/v2/canteens/{API_MENSA_IP}/days/{currentDateInISOFormat}/meals'
+
+# this has to be executed before the url-check
+# on holiday the url-check exits the script
+createAndPublishSpecialRedditPosts(currentDate)
 
 if not isValidUrl(API_URL):
     exit()
 
 apiResponse = urlopen(API_URL)
 responseData = json.loads(apiResponse.read())
-
 if jsonDataIsEmpty(responseData):
     exit()
 
