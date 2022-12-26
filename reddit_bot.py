@@ -44,4 +44,7 @@ API_URL = f'https://openmensa.org/api/v2/canteens/{API_MENSA_IP}/days/{currentDa
 apiResponse = urlopen(API_URL)
 responseData = json.loads(apiResponse.read())
 
+if responseData == None:
+    exit
+
 createAndPublishRedditPost(responseData, currentDate)
