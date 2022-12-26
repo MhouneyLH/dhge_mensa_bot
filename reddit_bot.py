@@ -1,8 +1,9 @@
-import praw
-from urllib.request import urlopen
-import json
 import datetime
+import json
+import praw
+import random
 import requests
+from urllib.request import urlopen
 
 ##### CONSTANTS #####
 API_MENSA_IP = '836'
@@ -13,6 +14,10 @@ PRAW_CLIENT_SECRET = 'KpgXvshvdMjixot1J5grXZ3U737mHw'
 PRAW_REFRESH_TOKEN = '2418566552937-xh4rG2tMISfYHeWMJl9nF29-kYGTAw'
 PRAW_USER_AGENT = 'mensa-bot v1.1 by /u/MensaBot'
 POST_BODY_INFORMATION_MESSAGE = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post oder generell für diesen Bot einfallen, kannst du diese gerne [💬 hier](https://github.com/MhouneyLH/dhge_mensa_bot) in Form einese Issues mitteilen.\n'
+FOOD_EMOJIS = [ '🍕', '🍔', '🍟', '🌭', '🍿', '🥓', '🍳', '🥗', '🥙', '🥪', '🌮', '🌯', '🍖', '🍗',
+                '🥩', '🥟', '🥠', '🥡', '🍤', '🍣', '🦪', '🍜', '🍛', '🍚', '🍙', '🍘', '🧆', '🥘',
+                '🍲', '🍝', '🥣', '🍰', '🎂', '🍪', '🥦', '🌶', '🍵', '🥮', '🍥', '🧀', '🥖', '🥯',
+                '🥨', '🥐', '🍞', ] 
 
 ##### FUNCTIONS #####
 def isValidUrl(url):
@@ -23,6 +28,10 @@ def jsonDataIsEmpty(data):
 
 def checkDayAndMonth(date, day, month):
     return  date.day == day and date.month == month
+
+def getRandomFoodEmoji():
+    randomNumber = random.randint(0, len(FOOD_EMOJIS) - 1)
+    return FOOD_EMOJIS[randomNumber]
 
 def createAndPublishRedditPost(data, date):
     global reddit
@@ -36,7 +45,7 @@ def createAndPublishRedditPost(data, date):
         mealPriceStudents = meal["prices"]["students"]
         mealNotes = meal["notes"]
 
-        body += f'# {mealName}\n* Preis (Studenten): {mealPriceStudents:.2f}€\n'
+        body += f'# {mealName} {getRandomFoodEmoji()}\n* Preis (Studenten): {mealPriceStudents:.2f}€\n'
         for j in range(0, len(mealNotes)):
             body += f'* {mealNotes[j]}\n'
     
