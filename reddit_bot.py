@@ -46,7 +46,29 @@ def createAndPublishSpecialRedditPosts(date):
     global reddit
 
     title = ''
-    if checkDayAndMonth(date, 6, 12):
+    body = POST_BODY_INFORMATION_MESSAGE
+
+    if checkDayAndMonth(date, 14, 2):
+        title = 'Einen schönen Valentinstag, wünscht euch der DHGE-Reddit-Bot! 💘🌹'
+    elif checkDayAndMonth(date, 8, 3):
+        title = 'Einen tollen Frauentag, wünscht euch der DHGE-Reddit-Bot! 👩🏻💃🏻'
+    elif checkDayAndMonth(date, 9, 4): # @todo: Ostern muss angepasst werden
+        title = 'Frohe Ostern, wünscht euch der DHGE-Reddit-Bot! Viel Spaß beim Suchen. 🐰🐇'
+    elif checkDayAndMonth(date, 1, 5):
+        title = 'Einen wunderschönen Tag der Arbeit, wünscht euch der DHGE-Reddit-Bot! In diesem Sinne: Coded, was das Zeug hält! 🔨💻'
+    elif checkDayAndMonth(date, 14, 5): # @todo: Muttertag muss angepasst werden
+        title = 'Der DHGE-Reddit-Bot wünscht allen Müttern einen wundervollen Muttertag! 🤰🏻'
+    elif checkDayAndMonth(date, 18, 5): # @todo: Männertag muss angepasst werden
+        title = 'Einen erfolgreichen Männertag, wünscht euch der DHGE-Reddit-Bot! 🤵🏻🍻'
+    elif checkDayAndMonth(date, 28, 5): # @todo: Pfingsten muss angepasst werden
+        title = 'Ein ruhiges und entspannendes Pfingstfest, wünscht euch der DHGE-Reddit-Bot! 🤵🏻🍻'
+    elif checkDayAndMonth(date, 20, 9):
+        title = 'Zumindest für alle, die in Thüringen wohnen, wünscht euch der DHGE-Reddit-Bot einen frohen Weltkindertag! 🧒🧒🏻🧒🏼🧒🏽🧒🏾🧒🏿'
+    elif checkDayAndMonth(date, 3, 10):
+        title = 'Einen geschichtsträchtigen Tag der deutschen Einheit, wünscht euch der DHGE-Reddit-Bot! 🇩🇪'
+    elif checkDayAndMonth(date, 31, 10):
+        title = 'Happy Halloween, wünscht euch der DHGE-Reddit-Bot! 🎃👹'
+    elif checkDayAndMonth(date, 6, 12):
         title = 'Einen schönen Nikolaustag, wünscht euch der DHGE-Reddit-Bot! 🎅🏻'
     elif checkDayAndMonth(date, 24, 12):
         title = 'Frohe Weihnachten und ein besinnliches Fest, wünscht euch der DHGE-Reddit-Bot! 🎁🎅🏻🎁'
@@ -58,8 +80,6 @@ def createAndPublishSpecialRedditPosts(date):
         title = 'Frohes neues Jahr, wünscht euch der DHGE-Reddit-Bot! 🧨🎆 Ich hoffe, dass ihr alles schafft, was ihr euch für dieses Jahr vorgenommen habt. 🚀'
     else:
         return
-
-    body = POST_BODY_INFORMATION_MESSAGE
 
     reddit.subreddit(REDDIT_DHGE_NAME).submit(title, selftext = body, flair_id = REDDIT_FLAIR_ID_INFORMATION)
 
