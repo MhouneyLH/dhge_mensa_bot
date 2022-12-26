@@ -8,7 +8,7 @@ on:
   schedule:
     # once a day at 10am (except on weekend)
     # cron uses UTC-timezone -> germany (berlin) is in the timezone UTC+1
-    - cron: '0 9 * * 1-5'
+    - cron: '0 9 * * *'
 
 permissions:
   contents: read
