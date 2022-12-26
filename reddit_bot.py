@@ -2,6 +2,7 @@ import praw
 from urllib.request import urlopen
 import json
 import datetime
+import requests
 
 ##### CONSTANTS #####
 API_MENSA_IP = '836'
@@ -13,6 +14,12 @@ PRAW_REFRESH_TOKEN = '2418566552937-xh4rG2tMISfYHeWMJl9nF29-kYGTAw'
 PRAW_USER_AGENT = 'mensa-bot v1.1 by /u/MensaBot'
 
 ##### FUNCTIONS #####
+def isValidUrl(url):
+	return requests.head(url).status_code < 400
+
+def jsonDataIsEmpty(data):
+    return data == None
+
 def createAndPublishRedditPost(data, date):
     global reddit
 
@@ -41,10 +48,13 @@ currentDate = datetime.datetime.now()
 currentDateInISOFormat = currentDate.isoformat()[0:10]
 API_URL = f'https://openmensa.org/api/v2/canteens/{API_MENSA_IP}/days/{currentDateInISOFormat}/meals'
 
+if not isValidUrl(API_URL):
+    exit()
+
 apiResponse = urlopen(API_URL)
 responseData = json.loads(apiResponse.read())
 
-if responseData == None:
-    exit
+if jsonDataIsEmpty(responseData):
+    exit()
 
 createAndPublishRedditPost(responseData, currentDate)
