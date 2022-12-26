@@ -11,6 +11,14 @@
 The DHGE-Mensa-Bot checks the meals from the openmensa-api of the DHGE (Duale Hochschule Gera-Eisenach) and posts a reddit-post in the subreddit [r/dhgememes](https://www.reddit.com/r/dhgememes/). This happens every day at 10am UTC+1 except on the weekend.
 <p align="right">(<a href="#readme_top">back to top</a>)</p>
 
+## 🎆 Showcase
+### Normal day
+![](./assets/normal_day_reddit_post_showcase.png)
+
+### Special day
+![](./assets/special_day_reddit_post_showcase.png)
+<p align="right">(<a href="#readme_top">back to top</a>)</p>
+
 ## 🔢 Getting started
 1. Clone the repository
    ```sh
