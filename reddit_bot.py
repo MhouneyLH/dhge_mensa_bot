@@ -13,6 +13,10 @@ PRAW_CLIENT_SECRET = 'KpgXvshvdMjixot1J5grXZ3U737mHw'
 PRAW_REFRESH_TOKEN = '2418566552937-xh4rG2tMISfYHeWMJl9nF29-kYGTAw'
 PRAW_USER_AGENT = 'mensa-bot v1.1 by /u/MensaBot'
 POST_BODY_INFORMATION_MESSAGE = 'Falls dir Verbesserungsvorschläge für diesen täglichen Post oder generell für diesen Bot einfallen, kannst du diese gerne [💬 hier](https://github.com/MhouneyLH/dhge_mensa_bot) in Form einese Issues mitteilen.\n'
+FOOD_EMOJIS = [ '🍕', '🍔', '🍟', '🌭', '🍿', '🥓', '🍳', '🥗', '🥙', '🥪', '🌮', '🌯', '🍖', '🍗',
+                '🥩', '🥟', '🥠', '🥡', '🍤', '🍣', '🦪', '🍜', '🍛', '🍚', '🍙', '🍘', '🧆', '🥘',
+                '🍲', '🍝', '🥣', '🍰', '🎂', '🍪', '🥦', '🌶', '🍵', '🥮', '🍥', '🧀', '🥖', '🥯',
+                '🥨', '🥐', '🍞', ] 
 
 ##### FUNCTIONS #####
 def isValidUrl(url):
