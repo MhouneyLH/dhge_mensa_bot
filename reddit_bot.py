@@ -29,6 +29,10 @@ def jsonDataIsEmpty(data):
 def checkDayAndMonth(date, day, month):
     return  date.day == day and date.month == month
 
+def getRandomFoodEmoji():
+    randomNumber = random.randint(0, len(FOOD_EMOJIS) - 1)
+    return FOOD_EMOJIS[randomNumber]
+
 def createAndPublishRedditPost(data, date):
     global reddit
 
@@ -41,7 +45,7 @@ def createAndPublishRedditPost(data, date):
         mealPriceStudents = meal["prices"]["students"]
         mealNotes = meal["notes"]
 
-        body += f'# {mealName}\n* Preis (Studenten): {mealPriceStudents:.2f}€\n'
+        body += f'# {mealName} {getRandomFoodEmoji()}\n* Preis (Studenten): {mealPriceStudents:.2f}€\n'
         for j in range(0, len(mealNotes)):
             body += f'* {mealNotes[j]}\n'
     
