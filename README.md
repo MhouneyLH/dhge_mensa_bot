@@ -1,6 +1,6 @@
 <a name="readme_top"></a>
 
-# dhge_mensa_bot
+# dhge_mensa_bot (NOT IN USE ANYMORE)
 [![Contributors][contributors_shield]][contributors_url]
 [![Forks][forks_shield]][forks_url]
 [![Stargazers][stars_shield]][stars_url]
